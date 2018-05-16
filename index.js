@@ -14,5 +14,12 @@ module.exports = {
     'import/first': 'off',
     'react/jsx-filename-extension': 'off',
     'no-param-reassign': ['error', { props: false }],
+    'sort-imports': [
+      "error", {
+        "ignoreCase": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "single", "all", "multiple"]
+      }
+    ]
   },
 };
