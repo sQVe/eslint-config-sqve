@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-sqve",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Airbnb + Prettier + Custom rules and preferences",
   "main": "index.js",
   "repository": "git@github.com:sQVe/eslint-config-sqve.git",
@@ -9,9 +9,11 @@
   "scripts": {
     "latest": "./utils/latest.sh"
   },
+ "peerDependencies": {
+    "eslint": "^5.4.0"
+  },
   "dependencies": {
     "babel-eslint": "^9.0.0",
-    "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-import": "^2.14.0",
