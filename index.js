@@ -16,5 +16,25 @@ module.exports = {
     'import/first': 'off',
     'react/jsx-filename-extension': 'off',
     'no-param-reassign': ['error', { props: false }],
+    'valid-jsdoc': [
+      'error',
+      {
+        prefer: {
+          arg: 'param',
+          argument: 'param',
+          constructor: 'class',
+          return: 'returns',
+        },
+        preferType: {
+          Boolean: 'boolean',
+          Number: 'number',
+          Object: 'object',
+          String: 'string',
+        },
+        requireParamType: true,
+        requireReturn: true,
+        requireReturnType: true,
+      },
+    ],
   },
 };
