@@ -6,6 +6,7 @@ const rules = {
       exceptions: [{ property: 'propTypes' }, { property: 'defaultProps' }],
     },
   ],
+  'fp/no-rest-parameters': 'off',
   'fp/no-unused-expression': ['off'],
   'func-call-spacing': ['error', 'always', { allowNewlines: true }],
 }
@@ -31,7 +32,6 @@ module.exports = {
         'fp/no-mutation': 'off',
         'fp/no-nil': 'off',
         'fp/no-proxy': 'off',
-        'fp/no-rest-parameters': 'off',
         'fp/no-this': 'off',
         'fp/no-throw': 'off',
         'fp/no-unused-expression': 'off',
