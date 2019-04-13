@@ -14,6 +14,8 @@ const rules = {
         Object: 'object',
         String: 'string',
       },
+      requireParamDescription: false,
+      requireReturnDescription: false,
       requireParamType: true,
       requireReturn: true,
       requireReturnType: true,
