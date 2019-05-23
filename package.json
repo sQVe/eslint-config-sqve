@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-sqve",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Personal ESLint configs",
   "main": "index.js",
   "repository": "git@github.com:sQVe/eslint-config-sqve.git",
@@ -19,14 +19,14 @@
     "eslint-plugin-standard": "^4.0.0"
   },
   "dependencies": {
-    "eslint-config-prettier": "~4.1.0",
+    "eslint-config-prettier": "~4.3.0",
     "eslint-config-standard": "~12.0.0",
     "eslint-config-standard-react": "~7.0.0"
   },
   "devDependencies": {
     "eslint": "~5.16.0",
     "eslint-plugin-import": "^2.17.0",
-    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-node": "^9.0.0",
     "eslint-plugin-promise": "^4.1.0",
     "eslint-plugin-react": "^7.12.0",
     "eslint-plugin-standard": "^4.0.0",
