@@ -12,4 +12,21 @@ module.exports = {
     'prettier/@typescript-eslint',
   ],
   plugins: ['@typescript-eslint'],
+  rules: {
+    '@typescript-eslint/member-delimiter-style': [
+      'error',
+      {
+        multiline: {
+          delimiter: 'comma',
+          requireLast: true,
+        },
+        singleline: {
+          delimiter: 'comma',
+          requireLast: false,
+        },
+      },
+    ],
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
+  },
 }
