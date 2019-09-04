@@ -4,7 +4,6 @@ module.exports = {
     warnOnUnsupportedTypeScriptVersion: false,
     ecmaFeatures: { jsx: true },
     project: './tsconfig.json',
-    useJSXTextNode: true,
   },
   extends: [
     './index.js',
