@@ -1,10 +1,10 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    warnOnUnsupportedTypeScriptVersion: false,
     ecmaFeatures: { jsx: true },
-    useJSXTextNode: true,
     project: './tsconfig.json',
-    tsconfigRootDir: '../../',
+    useJSXTextNode: true,
   },
   extends: [
     './index.js',
