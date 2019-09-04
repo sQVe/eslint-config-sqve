@@ -1,4 +1,4 @@
-export const testSettings = {
+const testSettings = {
   files: ['test/**/*.{js,mjs,ts}', '**/*.test.{js,mjs,ts}'],
   env: { browser: true, es6: true, jest: true, node: true },
   rules: { 'import/first': 'off' },

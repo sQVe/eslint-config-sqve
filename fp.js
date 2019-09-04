@@ -1,7 +1,6 @@
-import { testSettings as defaultTestSettings } from './index'
-
-export const testSettings = {
-  ...defaultTestSettings,
+const testSettings = {
+  files: ['test/**/*.{js,mjs,ts}', '**/*.test.{js,mjs,ts}'],
+  env: { browser: true, es6: true, jest: true, node: true },
   rules: {
     'fp/no-arguments': 'off',
     'fp/no-class': 'off',
