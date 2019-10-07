@@ -5,6 +5,13 @@ const defaultSettings = {
 }
 
 const typescriptSettings = {
+  files: ['**/*.{ts,tsx}'],
+  extends: [
+    './index.js',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'prettier/@typescript-eslint',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: { jsx: true },
@@ -12,12 +19,6 @@ const typescriptSettings = {
     project: './tsconfig.json',
     warnOnUnsupportedTypeScriptVersion: false,
   },
-  extends: [
-    './index.js',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'prettier/@typescript-eslint',
-  ],
   plugins: ['@typescript-eslint'],
   rules: {
     '@typescript-eslint/member-delimiter-style': [
