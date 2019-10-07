@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-sqve",
-  "version": "2.5.3",
+  "version": "2.5.4",
   "description": "Personal ESLint configs",
   "main": "index.js",
   "repository": "git@github.com:sQVe/eslint-config-sqve.git",
@@ -10,13 +10,16 @@
     "update": "npx install-peerdeps --dev eslint-config-standard"
   },
   "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "~2.3.0",
+    "@typescript-eslint/parser": "~2.3.0",
     "babel-eslint": "~10.0.0",
     "eslint": "~6.5.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.0",
     "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-standard": "^4.0.0"
+    "eslint-plugin-standard": "^4.0.0",
+    "typescript": "~3.6.0"
   },
   "dependencies": {
     "eslint-config-prettier": "~6.4.0",
@@ -24,6 +27,9 @@
     "eslint-config-standard-react": "~9.2.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "~2.3.0",
+    "@typescript-eslint/parser": "~2.3.0",
+    "babel-eslint": "~10.0.0",
     "eslint": "~6.5.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-node": "^10.0.0",
@@ -33,8 +39,6 @@
     "prettier": "~1.18.0"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "~2.3.0",
-    "@typescript-eslint/parser": "~2.3.0",
     "eslint-plugin-fp": "~2.3.0"
   }
 }
