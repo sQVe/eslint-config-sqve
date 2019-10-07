@@ -1,5 +1,21 @@
 const base = require('./index')
 
+const defaultSettings = {
+  extends: ['./index.js', 'plugin:fp/recommended'],
+  plugins: ['fp'],
+  rules: {
+    'fp/no-mutation': [
+      'error',
+      {
+        commonjs: true,
+        exceptions: [{ property: 'propTypes' }, { property: 'defaultProps' }],
+      },
+    ],
+    'fp/no-rest-parameters': 'off',
+    'fp/no-unused-expression': ['off'],
+  },
+}
+
 const testSettings = {
   env: { ...base.env, jest: true },
   files: ['test/**/*.{js,jsx,mjs,ts,tsx}', '**/*.test.{js,jsx,mjs,ts,tsx}'],
@@ -25,18 +41,6 @@ const testSettings = {
 }
 
 module.exports = {
-  extends: ['./index.js', 'plugin:fp/recommended'],
-  plugins: ['fp'],
-  rules: {
-    'fp/no-mutation': [
-      'error',
-      {
-        commonjs: true,
-        exceptions: [{ property: 'propTypes' }, { property: 'defaultProps' }],
-      },
-    ],
-    'fp/no-rest-parameters': 'off',
-    'fp/no-unused-expression': ['off'],
-  },
+  ...defaultSettings,
   overrides: [testSettings],
 }

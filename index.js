@@ -1,3 +1,9 @@
+const defaultSettings = {
+  env: { browser: true, es6: true, node: true },
+  extends: ['standard', 'standard-react', 'prettier', 'prettier/react'],
+  parser: 'babel-eslint',
+}
+
 const testSettings = {
   env: { ...defaultSettings.env, jest: true },
   files: ['test/**/*.{js,jsx,mjs,ts,tsx}', '**/*.test.{js,jsx,mjs,ts,tsx}'],
@@ -7,7 +13,6 @@ const testSettings = {
 const typescriptSettings = {
   files: ['**/*.{ts,tsx}'],
   extends: [
-    './index.js',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier/@typescript-eslint',
@@ -34,8 +39,6 @@ const typescriptSettings = {
 }
 
 module.exports = {
-  env: { browser: true, es6: true, node: true },
-  extends: ['standard', 'standard-react', 'prettier', 'prettier/react'],
+  ...defaultSettings,
   overrides: [testSettings, typescriptSettings],
-  parser: 'babel-eslint',
 }
