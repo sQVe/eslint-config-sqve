@@ -1,6 +1,8 @@
+const base = require('./index')
+
 const testSettings = {
-  files: ['test/**/*.{js,mjs,ts}', '**/*.test.{js,mjs,ts}'],
-  env: { browser: true, es6: true, jest: true, node: true },
+  env: { ...base.env, jest: true },
+  files: ['test/**/*.{js,jsx,mjs,ts,tsx}', '**/*.test.{js,jsx,mjs,ts,tsx}'],
   rules: {
     'fp/no-arguments': 'off',
     'fp/no-class': 'off',
