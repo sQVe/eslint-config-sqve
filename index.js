@@ -1,7 +1,7 @@
-const defaultSettings = {
-  env: { browser: true, es6: true, node: true },
-  extends: ['standard', 'standard-react', 'prettier', 'prettier/react'],
-  parser: 'babel-eslint',
+const testSettings = {
+  env: { ...defaultSettings.env, jest: true },
+  files: ['test/**/*.{js,jsx,mjs,ts,tsx}', '**/*.test.{js,jsx,mjs,ts,tsx}'],
+  rules: { 'import/first': 'off' },
 }
 
 const typescriptSettings = {
@@ -33,13 +33,9 @@ const typescriptSettings = {
   },
 }
 
-const testSettings = {
-  env: { ...defaultSettings.env, jest: true },
-  files: ['test/**/*.{js,jsx,mjs,ts,tsx}', '**/*.test.{js,jsx,mjs,ts,tsx}'],
-  rules: { 'import/first': 'off' },
-}
-
 module.exports = {
-  ...defaultSettings,
-  overrides: [typescriptSettings, testSettings],
+  env: { browser: true, es6: true, node: true },
+  extends: ['standard', 'standard-react', 'prettier', 'prettier/react'],
+  overrides: [testSettings, typescriptSettings],
+  parser: 'babel-eslint',
 }
