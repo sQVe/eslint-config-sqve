@@ -10,8 +10,8 @@
     "update": "npx install-peerdeps --dev eslint-config-standard"
   },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "~2.3.0",
-    "@typescript-eslint/parser": "~2.3.0",
+    "@typescript-eslint/eslint-plugin": "~2.5.0",
+    "@typescript-eslint/parser": "~2.5.0",
     "babel-eslint": "~10.0.0",
     "eslint": "~6.5.0",
     "eslint-plugin-import": "^2.18.0",
