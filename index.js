@@ -2,12 +2,23 @@ const defaultSettings = {
   env: { browser: true, es6: true, node: true },
   extends: ['standard', 'standard-react', 'prettier', 'prettier/react'],
   parser: 'babel-eslint',
+  rules: {
+    'no-unused-vars': [
+      'error',
+      {
+        args: 'none',
+        ignoreRestSiblings: true,
+        vars: 'all',
+        varsIgnorePattern: '^_+$',
+      },
+    ],
+  },
 }
 
 const testSettings = {
   env: { ...defaultSettings.env, jest: true },
   files: ['test/**/*.{js,jsx,mjs,ts,tsx}', '**/*.test.{js,jsx,mjs,ts,tsx}'],
-  rules: { 'import/first': 'off' },
+  rules: { ...defaultSettings.rules, 'import/first': 'off' },
 }
 
 const typescriptSettings = {
@@ -25,6 +36,7 @@ const typescriptSettings = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
+    ...defaultSettings.rules,
     '@typescript-eslint/member-delimiter-style': [
       'error',
       {
