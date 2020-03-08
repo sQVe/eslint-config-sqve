@@ -15,12 +15,6 @@ const defaultSettings = {
   },
 }
 
-const testSettings = {
-  env: { ...defaultSettings.env, jest: true },
-  files: ['test/**/*.{js,jsx,mjs,ts,tsx}', '**/*.test.{js,jsx,mjs,ts,tsx}'],
-  rules: { ...defaultSettings.rules, 'import/first': 'off' },
-}
-
 const typescriptSettings = {
   files: ['**/*.{ts,tsx}'],
   extends: [
@@ -50,7 +44,13 @@ const typescriptSettings = {
   },
 }
 
+const testSettings = {
+  env: { ...defaultSettings.env, jest: true },
+  files: ['test/**/*.{js,jsx,mjs}', '**/*.test.{js,jsx,mjs}'],
+  rules: { ...defaultSettings.rules, 'import/first': 'off' },
+}
+
 module.exports = {
   ...defaultSettings,
-  overrides: [testSettings, typescriptSettings],
+  overrides: [typescriptSettings, testSettings],
 }

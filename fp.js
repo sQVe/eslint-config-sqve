@@ -18,7 +18,7 @@ const defaultSettings = {
 
 const testSettings = {
   env: { ...base.env, jest: true },
-  files: ['test/**/*.{js,jsx,mjs,ts,tsx}', '**/*.test.{js,jsx,mjs,ts,tsx}'],
+  files: ['test/**/*.{js,jsx,mjs}', '**/*.test.{js,jsx,mjs}'],
   rules: {
     'fp/no-arguments': 'off',
     'fp/no-class': 'off',
