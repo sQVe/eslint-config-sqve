@@ -20,7 +20,7 @@
     "eslint-plugin-standard": "^4.0.0"
   },
   "dependencies": {
-    "eslint-config-prettier": "~6.10.0",
+    "eslint-config-prettier": "~6.11.0",
     "eslint-config-standard": "~14.1.0",
     "eslint-config-standard-react": "~9.2.0"
   },
