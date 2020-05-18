@@ -35,12 +35,12 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-standard": "^4.0.0",
     "prettier": "~2.0.0",
-    "typescript": "~3.8.0"
+    "typescript": "~3.9.2"
   },
   "optionalDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
     "eslint-plugin-fp": "~2.3.0",
-    "typescript": "~3.8.0"
+    "typescript": "~3.9.2"
   }
 }
