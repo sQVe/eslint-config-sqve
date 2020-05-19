@@ -1,6 +1,12 @@
-const defaultSettings = {
+const common = {
   env: { browser: true, es6: true, node: true },
-  extends: ['standard', 'standard-react', 'prettier', 'prettier/react'],
+  extends: [
+    'standard',
+    'standard-react',
+    'plugin:react-hooks/recommended',
+    'prettier',
+    'prettier/react',
+  ],
   parser: 'babel-eslint',
   rules: {
     'no-unused-vars': [
@@ -15,7 +21,7 @@ const defaultSettings = {
   },
 }
 
-const typescriptSettings = {
+const typescript = {
   files: ['**/*.{ts,tsx}'],
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -31,26 +37,31 @@ const typescriptSettings = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    ...defaultSettings.rules,
-    '@typescript-eslint/member-delimiter-style': [
+    ...common.rules,
+    'no-unused-vars': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-unused-vars': [
       'error',
       {
-        multiline: { delimiter: 'semi', requireLast: true },
-        singleline: { delimiter: 'semi', requireLast: false },
+        args: 'none',
+        ignoreRestSiblings: true,
+        vars: 'all',
+        varsIgnorePattern: '^_+$',
       },
     ],
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-unused-vars': 'error',
   },
 }
 
-const testSettings = {
-  env: { ...defaultSettings.env, jest: true },
-  files: ['test/**/*.{js,jsx,mjs}', '**/*.test.{js,jsx,mjs}'],
-  rules: { ...defaultSettings.rules, 'import/first': 'off' },
+const test = {
+  env: { ...common.env, jest: true },
+  files: ['test/**/*.{js,jsx,mjs,ts,tsx}', '**/*.test.{js,jsx,mjs,ts,tsx}'],
+  rules: {
+    ...common.rules,
+    'import/first': 'off',
+  },
 }
 
 module.exports = {
-  ...defaultSettings,
-  overrides: [typescriptSettings, testSettings],
+  ...common,
+  overrides: [typescript, test],
 }
