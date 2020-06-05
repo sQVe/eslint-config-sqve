@@ -9,6 +9,39 @@ const common = {
   ],
   parser: 'babel-eslint',
   rules: {
+    /**
+     * Disallow empty functions.
+     * https://eslint.org/docs/rules/no-empty-function
+     */
+    'no-empty-function': 'error',
+
+    /**
+     * Disallow variable declarations from shadowing variables declared in the
+     * outer scope.
+     * https://eslint.org/docs/rules/no-shadow
+     */
+    'no-shadow': [
+      'error',
+      {
+        allow: [
+          '_',
+          '__',
+          '___',
+          '____',
+          '_____',
+          '______',
+          '_______',
+          '________',
+          '_________',
+          '__________',
+        ],
+      },
+    ],
+
+    /**
+     * Disallow unused variables.
+     * https://eslint.org/docs/rules/no-empty-function
+     */
     'no-unused-vars': [
       'error',
       {
@@ -18,6 +51,22 @@ const common = {
         varsIgnorePattern: '^_+$',
       },
     ],
+
+    /**
+     * Allow omitting prop types, mainly due to the rule being buggy and
+     * reporting many false positives. Furthermore, this would be obsolete once
+     * we move over to TypeScript.
+     * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
+     */
+    'react/prop-types': 'off',
+
+    /**
+     * Disable `no-callback-literal` rule, mainly due to it being too
+     * restrictive and reporting false positives. It is also largely unused as
+     * it is prefered to use async/await instead.
+     * https://github.com/standard/eslint-plugin-standard
+     */
+    'standard/no-callback-literal': 'off',
   },
 }
 
