@@ -103,7 +103,10 @@ const typescript = {
 
 const test = {
   env: { ...common.env, jest: true },
-  files: ['test/**/*.{js,jsx,mjs,ts,tsx}', '**/*.test.{js,jsx,mjs,ts,tsx}'],
+  files: [
+    'test/**/*.{js,jsx,mjs,ts,tsx}',
+    '**/*.{spec,test}.{js,jsx,mjs,ts,tsx}',
+  ],
   rules: {
     ...common.rules,
     'import/first': 'off',
