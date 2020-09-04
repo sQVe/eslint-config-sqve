@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-sqve",
-  "version": "2.9.0",
+  "version": "2.10.0",
   "description": "Personal ESLint configs",
   "main": "index.js",
   "repository": "git@github.com:sQVe/eslint-config-sqve.git",
@@ -24,11 +24,11 @@
     "eslint-config-prettier": "~6.11.0",
     "eslint-config-standard": "~14.1.0",
     "eslint-config-standard-react": "~9.2.0",
-    "eslint-plugin-react-hooks": "~4.0.0"
+    "eslint-plugin-react-hooks": "~4.1.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.0.0",
-    "@typescript-eslint/parser": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^4.0.0",
     "babel-eslint": "~10.1.0",
     "eslint": "^7.0.0",
     "eslint-plugin-import": "^2.18.0",
@@ -37,14 +37,14 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-standard": "^4.0.0",
     "husky": "~4.2.0",
-    "lint-staged": "~10.2.0",
-    "prettier": "~2.0.0",
-    "typescript": "^3.9.0"
+    "lint-staged": "~10.3.0",
+    "prettier": "~2.1.0",
+    "typescript": "^4.0.0"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.0.0",
-    "@typescript-eslint/parser": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^4.0.0",
     "eslint-plugin-fp": "~2.3.0",
-    "typescript": "~3.9.0"
+    "typescript": "~4.0.0"
   }
 }
