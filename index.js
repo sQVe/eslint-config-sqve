@@ -1,3 +1,15 @@
+const isDefaultESLintRule = (name) => name.includes('/') === false
+
+/** Turn ESLint rules off and use the TypeScript equivalents instead. */
+const createTypescriptRulesFromESLintRules = (rules) =>
+  Object.entries(rules).reduce(
+    (acc, [key, val]) =>
+      isDefaultESLintRule(key)
+        ? { ...acc, [key]: 'off', ['@typescript-eslint/' + key]: val }
+        : { ...acc, [key]: val },
+    {}
+  )
+
 const common = {
   env: { browser: true, es6: true, node: true },
   extends: [
@@ -53,6 +65,14 @@ const common = {
     ],
 
     /**
+     * Temporarily disable JSX handler name check as it currently reports false
+     * positives for inline functions. This should be reverted once
+     * https://github.com/yannickcr/eslint-plugin-react/pull/2761 is fixed.
+     * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
+     */
+    'react/jsx-handler-names': 'off',
+
+    /**
      * Allow omitting prop types, mainly due to the rule being buggy and
      * reporting many false positives. Furthermore, this would be obsolete once
      * we move over to TypeScript.
@@ -73,8 +93,11 @@ const common = {
 const typescript = {
   files: ['**/*.{ts,tsx}'],
   extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'standard-with-typescript',
+    'standard-react',
+    'plugin:react-hooks/recommended',
+    'prettier',
+    'prettier/react',
     'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
@@ -86,27 +109,23 @@ const typescript = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    ...common.rules,
-    'no-unused-vars': 'off',
+    ...createTypescriptRulesFromESLintRules(common.rules),
+
+    /**
+     * Disable force of explicit function return type. This allows TypeScript
+     * to figure out the type itself, which can be helpful in many cases.
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md
+     */
     '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        args: 'none',
-        ignoreRestSiblings: true,
-        vars: 'all',
-        varsIgnorePattern: '^_+$',
-      },
-    ],
   },
 }
 
 const test = {
   env: { ...common.env, jest: true },
   files: [
-    'test/**/*.{js,jsx,mjs,ts,tsx}',
     '**/*.{spec,test}.{js,jsx,mjs,ts,tsx}',
+    '**/jest.setup.{js,mjs,ts}',
+    'test/**/*.{js,jsx,mjs,ts,tsx}',
   ],
   rules: {
     ...common.rules,
