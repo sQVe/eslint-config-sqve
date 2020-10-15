@@ -130,6 +130,17 @@ const typescript = {
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md
      */
     '@typescript-eslint/explicit-function-return-type': 'off',
+
+    /**
+     * Enforce naming conventions.
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md
+     */
+    '@typescript-eslint/naming-convention': [
+      'error',
+      { selector: 'typeLike', format: ['PascalCase'] },
+      { selector: 'typeParameter', format: ['PascalCase'] },
+      { selector: 'interface', format: ['PascalCase'], prefix: ['I'] },
+    ],
   },
 }
 
