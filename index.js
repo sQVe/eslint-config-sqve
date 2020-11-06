@@ -92,7 +92,19 @@ const common = {
      * Sort imports.
      * https://github.com/lydell/eslint-plugin-simple-import-sort
      */
-    'simple-import-sort/sort': 'error',
+    'simple-import-sort/sort': [
+      'error',
+      {
+        groups: [
+          [`^(${require('module').builtinModules.join('|')})(/|$)`],
+          // Packages. `react` related packages come first.
+          // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
+          ['^react', '^@?\\w'],
+          // Absolute imports and Relative imports.
+          ['^(src|test)(/|$)', '^\\.'],
+        ],
+      },
+    ],
 
     /**
      * Disable `no-callback-literal` rule, mainly due to it being too
