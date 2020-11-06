@@ -1,6 +1,6 @@
 const isDefaultESLintRule = (name) => name.includes('/') === false
 
-/** Turn ESLint rules off and use the TypeScript equivalents instead. */
+// Turn ESLint rules off and use the TypeScript equivalents instead.
 const createTypescriptRulesFromESLintRules = (rules) =>
   Object.entries(rules).reduce(
     (acc, [key, val]) =>
@@ -21,7 +21,14 @@ const common = {
     'prettier/react',
   ],
   parser: 'babel-eslint',
+  plugins: ['simple-import-sort'],
   rules: {
+    /**
+     * Enforce newline after imports.
+     * https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md
+     */
+    'import/newline-after-import': 'error',
+
     /**
      * Disallow empty functions.
      * https://eslint.org/docs/rules/no-empty-function
@@ -80,6 +87,12 @@ const common = {
      * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
      */
     'react/prop-types': 'off',
+
+    /**
+     * Sort imports.
+     * https://github.com/lydell/eslint-plugin-simple-import-sort
+     */
+    'simple-import-sort/sort': 'error',
 
     /**
      * Disable `no-callback-literal` rule, mainly due to it being too
