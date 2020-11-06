@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-sqve",
-  "version": "2.12.4",
+  "version": "2.12.5",
   "description": "Personal ESLint configs",
   "main": "index.js",
   "repository": "git@github.com:sQVe/eslint-config-sqve.git",
