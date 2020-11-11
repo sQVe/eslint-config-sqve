@@ -151,7 +151,7 @@ const typescript = {
     '@typescript-eslint/naming-convention': [
       'error',
       { selector: 'typeLike', format: ['PascalCase'] },
-      { selector: 'typeParameter', format: ['PascalCase'] },
+      { selector: 'typeParameter', format: ['PascalCase'], prefix: ['T'] },
       { selector: 'interface', format: ['PascalCase'], prefix: ['I'] },
     ],
   },
