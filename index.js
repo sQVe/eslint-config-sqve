@@ -138,12 +138,6 @@ const typescript = {
     ...createTypescriptRulesFromESLintRules(common.rules),
 
     /**
-     * Enforce using `type` for object type definitions.
-     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/consistent-type-definitions.md
-     */
-    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-
-    /**
      * Disable force of explicit function return type. This allows TypeScript
      * to figure out the type itself, which can be helpful in many cases.
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md
