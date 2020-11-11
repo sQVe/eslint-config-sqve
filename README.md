@@ -15,7 +15,7 @@ npm install --save-dev eslint-config-sqve
 When the package is installed we need to ensure that all its' peer dependencies are installed by running:
 
 ```sh
-npm install --save-dev babel-eslint eslint eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard prettier
+npm install --save-dev babel-eslint eslint eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react prettier
 ```
 
 The `fp` config needs the optional dependency `eslint-plugin-fp` to be installed:
@@ -27,11 +27,5 @@ npm install --save-dev eslint-plugin-fp
 To use `typescript` we need to install the optional dependencies:📦
 
 ```sh
-npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
-```
-
-To install everything in one go:
-
-```sh
-npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript babel-eslint eslint eslint-plugin-fp eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard prettier
+npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript eslint-plugin-standard
 ```
