@@ -14,6 +14,7 @@ const common = {
   env: { browser: true, es6: true, node: true },
   extends: [
     'standard',
+    'standard-jsx',
     'standard-react',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
@@ -89,10 +90,17 @@ const common = {
     'react/prop-types': 'off',
 
     /**
+     * Sort exports.
+     * https://github.com/lydell/eslint-plugin-simple-import-sort
+     */
+
+    'simple-import-sort/imports': 'error',
+
+    /**
      * Sort imports.
      * https://github.com/lydell/eslint-plugin-simple-import-sort
      */
-    'simple-import-sort/sort': [
+    'simple-import-sort/imports': [
       'error',
       {
         groups: [

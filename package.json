@@ -22,11 +22,12 @@
   "dependencies": {
     "eslint-config-prettier": "^6.12.0",
     "eslint-config-standard": "^16.0.0",
+    "eslint-config-standard-jsx": "^10.0.0",
     "eslint-config-standard-react": "^11.0.0",
     "eslint-config-standard-with-typescript": "^19.0.0",
     "eslint-plugin-jsx-a11y": "^6.3.0",
     "eslint-plugin-react-hooks": "^4.1.0",
-    "eslint-plugin-simple-import-sort": "^5.0.0"
+    "eslint-plugin-simple-import-sort": "^6.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": ">=4.0.0",
