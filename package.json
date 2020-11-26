@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-sqve",
-  "version": "2.15.7",
+  "version": "2.15.8",
   "description": "Personal ESLint configs",
   "main": "index.js",
   "repository": "git@github.com:sQVe/eslint-config-sqve.git",
@@ -48,7 +48,7 @@
     "@typescript-eslint/eslint-plugin": ">=4.0.0",
     "@typescript-eslint/parser": ">=4.0.0",
     "eslint-plugin-fp": ">=2.3.0",
-    "eslint-plugin-standard": ">=4.0.0",
+    "eslint-plugin-standard": "^4.0.0",
     "typescript": ">=4.0.0"
   }
 }
