@@ -1,7 +1,7 @@
 const isDefaultESLintRule = (name) => name.includes('/') === false
 
 // Turn ESLint rules off and use the TypeScript equivalents instead.
-const createTypescriptRulesFromESLintRules = (rules) =>
+const useTypescriptRuleVariant = (rules) =>
   Object.entries(rules).reduce(
     (acc, [key, val]) =>
       isDefaultESLintRule(key)
@@ -25,7 +25,13 @@ const common = {
   plugins: ['simple-import-sort'],
   rules: {
     /**
-     * Enforce newline after imports.
+     * Allow callback literals.
+     * https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-callback-literal.md
+     */
+    'node/no-callback-literal': 'off',
+
+    /**
+     * Disallow newline after imports.
      * https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md
      */
     'import/newline-after-import': 'error',
@@ -76,7 +82,6 @@ const common = {
     /**
      * Temporarily disable JSX handler name check as it currently reports false
      * positives for inline functions. This should be reverted once
-     * https://github.com/yannickcr/eslint-plugin-react/pull/2761 is fixed.
      * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
      */
     'react/jsx-handler-names': 'off',
@@ -143,7 +148,7 @@ const typescript = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    ...createTypescriptRulesFromESLintRules(common.rules),
+    ...useTypescriptRuleVariant(common.rules), // eslint-disable-line react-hooks/rules-of-hooks
 
     /**
      * Disable force of explicit function return type. This allows TypeScript
