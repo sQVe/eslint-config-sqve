@@ -118,14 +118,6 @@ const common = {
         ],
       },
     ],
-
-    /**
-     * Disable `no-callback-literal` rule, mainly due to it being too
-     * restrictive and reporting false positives. It is also largely unused as
-     * it is prefered to use async/await instead.
-     * https://github.com/standard/eslint-plugin-standard
-     */
-    'standard/no-callback-literal': 'off',
   },
 }
 
