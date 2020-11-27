@@ -155,9 +155,17 @@ const typescript = {
      */
     '@typescript-eslint/naming-convention': [
       'error',
+      {
+        selector: 'default',
+        leadingUnderscore: 'allow',
+        format: ['camelCase', 'PascalCase'],
+      },
+      {
+        selector: 'variable',
+        leadingUnderscore: 'allow',
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+      },
       { selector: 'typeLike', format: ['PascalCase'] },
-      { selector: 'typeAlias', format: ['PascalCase'], prefix: ['T'] },
-      { selector: 'interface', format: ['PascalCase'], prefix: ['I'] },
     ],
   },
 }
