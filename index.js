@@ -157,13 +157,13 @@ const typescript = {
       'error',
       {
         selector: 'default',
-        leadingUnderscore: 'allow',
         format: ['camelCase', 'PascalCase'],
+        filter: { regex: '^_+$', match: false },
       },
       {
         selector: 'variable',
-        leadingUnderscore: 'allow',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+        filter: { regex: '^_+$', match: false },
       },
       { selector: 'typeLike', format: ['PascalCase'] },
     ],
