@@ -27,7 +27,7 @@
     "eslint-config-standard-with-typescript": "^19.0.0",
     "eslint-plugin-jsx-a11y": "^6.3.0",
     "eslint-plugin-react-hooks": "^4.1.0",
-    "eslint-plugin-simple-import-sort": "^6.0.0"
+    "eslint-plugin-simple-import-sort": "^7.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": ">=4.0.0",
