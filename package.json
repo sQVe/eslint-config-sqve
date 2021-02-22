@@ -20,7 +20,7 @@
     "prettier": ">=2.0.0"
   },
   "dependencies": {
-    "eslint-config-prettier": "^7.0.0",
+    "eslint-config-prettier": "^8.0.0",
     "eslint-config-standard": "^16.0.0",
     "eslint-config-standard-jsx": "^10.0.0",
     "eslint-config-standard-react": "^11.0.0",
