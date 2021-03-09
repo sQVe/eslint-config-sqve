@@ -19,7 +19,6 @@ const common = {
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
     'prettier',
-    'prettier/react',
   ],
   parser: 'babel-eslint',
   plugins: ['simple-import-sort'],
@@ -128,8 +127,6 @@ const typescript = {
     'standard-react',
     'plugin:react-hooks/recommended',
     'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
