@@ -16,8 +16,8 @@ const common = {
     'standard',
     'standard-jsx',
     'standard-react',
-    'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:react-hooks/recommended',
     'prettier',
   ],
   parser: 'babel-eslint',
@@ -36,35 +36,6 @@ const common = {
     'import/newline-after-import': 'error',
 
     /**
-     * Disallow empty functions.
-     * https://eslint.org/docs/rules/no-empty-function
-     */
-    'no-empty-function': 'error',
-
-    /**
-     * Disallow variable declarations from shadowing variables declared in the
-     * outer scope.
-     * https://eslint.org/docs/rules/no-shadow
-     */
-    'no-shadow': [
-      'error',
-      {
-        allow: [
-          '_',
-          '__',
-          '___',
-          '____',
-          '_____',
-          '______',
-          '_______',
-          '________',
-          '_________',
-          '__________',
-        ],
-      },
-    ],
-
-    /**
      * Disallow unused variables.
      * https://eslint.org/docs/rules/no-empty-function
      */
@@ -79,25 +50,9 @@ const common = {
     ],
 
     /**
-     * Temporarily disable JSX handler name check as it currently reports false
-     * positives for inline functions. This should be reverted once
-     * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
-     */
-    'react/jsx-handler-names': 'off',
-
-    /**
-     * Allow omitting prop types, mainly due to the rule being buggy and
-     * reporting many false positives. Furthermore, this would be obsolete once
-     * we move over to TypeScript.
-     * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
-     */
-    'react/prop-types': 'off',
-
-    /**
      * Sort exports.
      * https://github.com/lydell/eslint-plugin-simple-import-sort
      */
-
     'simple-import-sort/exports': 'error',
 
     /**
@@ -108,10 +63,13 @@ const common = {
       'error',
       {
         groups: [
+          // Node built ins.
           [`^(${require('module').builtinModules.join('|')})(/|$)`],
+
           // Packages. `react` related packages come first.
           // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
           ['^react', '^@?\\w'],
+
           // Absolute imports and Relative imports.
           ['^(src|test)(/|$)', '^\\.'],
         ],
@@ -137,7 +95,13 @@ const typescript = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    ...useTypescriptRuleVariant(common.rules), // eslint-disable-line react-hooks/rules-of-hooks
+    ...useTypescriptRuleVariant(common.rules),
+
+    /**
+     * PropTypes doesn't make sense in TypeScript-land.
+     * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
+     */
+    'react/prop-types': 'off',
 
     /**
      * Disable force of explicit function return type. This allows TypeScript
@@ -174,9 +138,23 @@ const test = {
     '**/jest.setup.{js,mjs,ts}',
     'test/**/*.{js,jsx,mjs,ts,tsx}',
   ],
+  extends: ['plugin:jest/recommended', 'plugin:jest/style'],
   rules: {
     ...common.rules,
+
+    /**
+     * Disable forcing imports to live at the head of the file. This is helpful
+     * in cases where you want to make jest mocks for imports (improved
+     * readability).
+     * https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/first.md
+     */
     'import/first': 'off',
+
+    /**
+     * Enforce the use of a top level describe block for all tests.
+     * https://github.com/folke/eslint-plugin-jest/blob/master/docs/rules/require-top-level-describe.md
+     */
+    'jest/require-top-level-describe': 'error',
   },
 }
 
