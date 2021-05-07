@@ -20,7 +20,7 @@ const common = {
     'plugin:react-hooks/recommended',
     'prettier',
   ],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   plugins: ['simple-import-sort'],
   rules: {
     /**
