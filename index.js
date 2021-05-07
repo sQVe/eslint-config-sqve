@@ -95,7 +95,7 @@ const typescript = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    ...useTypescriptRuleVariant(common.rules),
+    ...useTypescriptRuleVariant(common.rules), // eslint-disable-line react-hooks/rules-of-hooks
 
     /**
      * PropTypes doesn't make sense in TypeScript-land.
