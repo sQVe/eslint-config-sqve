@@ -12,7 +12,6 @@
     "update": "npx install-peerdeps --dev eslint-config-standard"
   },
   "peerDependencies": {
-    "@babel/eslint-parser": ">=7.13.0",
     "eslint": ">=6.2.2",
     "eslint-plugin-import": ">=2.18.0",
     "eslint-plugin-node": ">=11.0.0",
@@ -32,7 +31,6 @@
     "eslint-plugin-simple-import-sort": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": ">=7.13.0",
     "@typescript-eslint/eslint-plugin": ">=4.0.0",
     "eslint": ">=6.2.2",
     "eslint-plugin-import": ">=2.18.0",

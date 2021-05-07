@@ -20,7 +20,6 @@ const common = {
     'plugin:react-hooks/recommended',
     'prettier',
   ],
-  parser: '@babel/eslint-parser',
   plugins: ['simple-import-sort'],
   rules: {
     /**
@@ -89,7 +88,7 @@ const typescript = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: { jsx: true },
-    ecmaVersion: 2020,
+    ecmaVersion: 2021,
     project: './tsconfig.json',
     warnOnUnsupportedTypeScriptVersion: false,
   },

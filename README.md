@@ -15,7 +15,7 @@ npm install --save-dev eslint-config-sqve
 When the package is installed we need to ensure that all its' peer dependencies are installed by running:
 
 ```sh
-npm install --save-dev babel-eslint eslint eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react prettier
+npm install --save-dev eslint eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react prettier
 ```
 
 The `fp` config needs the optional dependency `eslint-plugin-fp` to be installed:
