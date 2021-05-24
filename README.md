@@ -18,12 +18,6 @@ When the package is installed we need to ensure that all its' peer dependencies 
 npm install --save-dev eslint eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-react prettier
 ```
 
-The `fp` config needs the optional dependency `eslint-plugin-fp` to be installed:
-
-```sh
-npm install --save-dev eslint-plugin-fp
-```
-
 To use `typescript` we need to install the optional dependencies:📦
 
 ```sh
