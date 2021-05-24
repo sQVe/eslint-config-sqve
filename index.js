@@ -105,7 +105,6 @@ const typescript = {
     ecmaFeatures: { jsx: true },
     ecmaVersion: 2021,
     project: './tsconfig.json',
-    tsconfigRootDir: __dirname,
     warnOnUnsupportedTypeScriptVersion: false,
   },
   plugins: ['@typescript-eslint'],
