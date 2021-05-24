@@ -1,7 +1,7 @@
 const isDefaultESLintRule = (name) => name.includes('/') === false
 
 // Turn ESLint rules off and use the TypeScript equivalents instead.
-const useTypescriptRuleVariant = (rules) =>
+const useTypeScriptMirroredRule = (rules) =>
   Object.entries(rules).reduce(
     (acc, [key, val]) =>
       isDefaultESLintRule(key)
@@ -10,91 +10,107 @@ const useTypescriptRuleVariant = (rules) =>
     {}
   )
 
+const commonRules = {
+  /**
+   * Allow callback literals.
+   * https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-callback-literal.md
+   */
+  'node/no-callback-literal': 'off',
+
+  /**
+   * Disallow newline after imports.
+   * https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md
+   */
+  'import/newline-after-import': 'error',
+
+  /**
+   * Disallow use of void except for statements. Void is a good way to
+   * explicitly mark promises as intentionally not awaited.
+   * https://eslint.org/docs/rules/no-void
+   */
+  'no-void': ['error', { allowAsStatement: true }],
+
+  /**
+   * Sort exports.
+   * https://github.com/lydell/eslint-plugin-simple-import-sort
+   */
+  'simple-import-sort/exports': 'warn',
+
+  /**
+   * Sort imports.
+   * https://github.com/lydell/eslint-plugin-simple-import-sort
+   */
+  'simple-import-sort/imports': [
+    'warn',
+    {
+      groups: [
+        // Node built-ins.
+        [`^(${require('module').builtinModules.join('|')})(/|$)`],
+
+        // React related packages come first, followed by things that start
+        // with a letter (or digit or underscore), or `@` followed by a letter.
+        ['^react', '^@?\\w'],
+
+        // Packages under our scope.
+        ['@sqve/'],
+
+        // Absolute imports and relative imports.
+        ['^(src|test)(/|$)', '^\\.'],
+      ],
+    },
+  ],
+}
+
+// Mirrored rules that need some kind of handling, like using the rule from a
+// different scope, before being applied.
+const mirroredRules = {
+  /**
+   * Disallow unused variables.
+   * https://eslint.org/docs/rules/no-empty-function
+   */
+  'no-unused-vars': [
+    'error',
+    {
+      args: 'none',
+      ignoreRestSiblings: true,
+      vars: 'all',
+      varsIgnorePattern: '^_+$',
+    },
+  ],
+}
+
 const common = {
-  env: { browser: true, es6: true, node: true },
+  env: { browser: true, es2021: true, node: true },
   extends: [
-    'standard',
     'standard-jsx',
     'standard-react',
     'plugin:jsx-a11y/recommended',
     'plugin:react-hooks/recommended',
-    'prettier',
   ],
   plugins: ['simple-import-sort'],
-  rules: {
-    /**
-     * Allow callback literals.
-     * https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-callback-literal.md
-     */
-    'node/no-callback-literal': 'off',
+  rules: { ...commonRules, ...mirroredRules },
+}
 
-    /**
-     * Disallow newline after imports.
-     * https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md
-     */
-    'import/newline-after-import': 'error',
-
-    /**
-     * Disallow unused variables.
-     * https://eslint.org/docs/rules/no-empty-function
-     */
-    'no-unused-vars': [
-      'error',
-      {
-        args: 'none',
-        ignoreRestSiblings: true,
-        vars: 'all',
-        varsIgnorePattern: '^_+$',
-      },
-    ],
-
-    /**
-     * Sort exports.
-     * https://github.com/lydell/eslint-plugin-simple-import-sort
-     */
-    'simple-import-sort/exports': 'error',
-
-    /**
-     * Sort imports.
-     * https://github.com/lydell/eslint-plugin-simple-import-sort
-     */
-    'simple-import-sort/imports': [
-      'error',
-      {
-        groups: [
-          // Node built ins.
-          [`^(${require('module').builtinModules.join('|')})(/|$)`],
-
-          // Packages. `react` related packages come first.
-          // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
-          ['^react', '^@?\\w'],
-
-          // Absolute imports and Relative imports.
-          ['^(src|test)(/|$)', '^\\.'],
-        ],
-      },
-    ],
-  },
+const javascript = {
+  files: ['**/*.{js,jsx,mjs}'],
+  extends: ['standard', 'prettier'],
+  rules: common.rules,
 }
 
 const typescript = {
   files: ['**/*.{ts,tsx}'],
-  extends: [
-    'standard-with-typescript',
-    'standard-react',
-    'plugin:react-hooks/recommended',
-    'prettier',
-  ],
+  extends: ['standard-with-typescript', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: { jsx: true },
     ecmaVersion: 2021,
     project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
     warnOnUnsupportedTypeScriptVersion: false,
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    ...useTypescriptRuleVariant(common.rules), // eslint-disable-line react-hooks/rules-of-hooks
+    ...useTypeScriptMirroredRule(mirroredRules), // eslint-disable-line react-hooks/rules-of-hooks
 
     /**
      * PropTypes doesn't make sense in TypeScript-land.
@@ -120,12 +136,44 @@ const typescript = {
         format: ['camelCase', 'PascalCase'],
         filter: { regex: '^_+$', match: false },
       },
+      { selector: 'typeLike', format: ['PascalCase'] },
+      {
+        selector: 'parameter',
+        format: ['camelCase'],
+        filter: { regex: '^_+$', match: false },
+      },
       {
         selector: 'variable',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
         filter: { regex: '^_+$', match: false },
       },
-      { selector: 'typeLike', format: ['PascalCase'] },
+      { selector: 'enumMember', format: ['PascalCase'] },
+    ],
+
+    /**
+     * Prefer nullish coalesing except on conditional tests.
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-nullish-coalescing.md
+     */
+    '@typescript-eslint/prefer-nullish-coalescing': [
+      'error',
+      { ignoreConditionalTests: true, ignoreMixedLogicalExpressions: false },
+    ],
+
+    /**
+     * Enforce strict boolean expressions except for null or undefined.
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/strict-boolean-expressions.md
+     */
+    '@typescript-eslint/strict-boolean-expressions': [
+      'error',
+      {
+        allowString: false,
+        allowNumber: false,
+        allowNullableObject: true,
+        allowNullableBoolean: true,
+        allowNullableString: true,
+        allowNullableNumber: true,
+        allowAny: false,
+      },
     ],
   },
 }
@@ -139,8 +187,6 @@ const test = {
   ],
   extends: ['plugin:jest/recommended', 'plugin:jest/style'],
   rules: {
-    ...common.rules,
-
     /**
      * Disable forcing imports to live at the head of the file. This is helpful
      * in cases where you want to make jest mocks for imports (improved
@@ -159,5 +205,5 @@ const test = {
 
 module.exports = {
   ...common,
-  overrides: [typescript, test],
+  overrides: [javascript, test, typescript],
 }
