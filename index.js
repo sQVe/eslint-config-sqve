@@ -204,5 +204,5 @@ const test = {
 
 module.exports = {
   ...common,
-  overrides: [javascript, test, typescript],
+  overrides: [javascript, typescript, test],
 }
