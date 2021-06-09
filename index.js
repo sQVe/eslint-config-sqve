@@ -133,17 +133,20 @@ const typescript = {
       {
         selector: 'default',
         format: ['camelCase', 'PascalCase'],
+        leadingUnderscore: 'allow',
         filter: { regex: '^_+$', match: false },
       },
       { selector: 'typeLike', format: ['PascalCase'] },
       {
         selector: 'parameter',
         format: ['camelCase'],
+        leadingUnderscore: 'allow',
         filter: { regex: '^_+$', match: false },
       },
       {
         selector: 'variable',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+        leadingUnderscore: 'allow',
         filter: { regex: '^_+$', match: false },
       },
       { selector: 'enumMember', format: ['PascalCase'] },
