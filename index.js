@@ -74,7 +74,7 @@ const mirroredRules = {
       args: 'none',
       ignoreRestSiblings: true,
       vars: 'all',
-      varsIgnorePattern: '^_+$',
+      varsIgnorePattern: '^_[\\w\\d_]*$',
     },
   ],
 }
