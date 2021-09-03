@@ -31,6 +31,12 @@ const commonRules = {
   'no-void': ['error', { allowAsStatement: true }],
 
   /**
+   * Allow different jsx handler names as it produces  false positives when enabled.
+   * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
+   */
+  'react/jsx-handler-names': 'off',
+
+  /**
    * Sort exports.
    * https://github.com/lydell/eslint-plugin-simple-import-sort
    */
