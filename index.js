@@ -1,4 +1,4 @@
-const isDefaultESLintRule = (name) => name.includes('/') === false
+const isDefaultESLintRule = (name) => name.includes('/') === false;
 
 // Turn ESLint rules off and use the TypeScript equivalents instead.
 const useTypeScriptMirroredRule = (rules) =>
@@ -8,7 +8,7 @@ const useTypeScriptMirroredRule = (rules) =>
         ? { ...acc, [key]: 'off', ['@typescript-eslint/' + key]: val }
         : { ...acc, [key]: val },
     {}
-  )
+  );
 
 const commonRules = {
   /**
@@ -65,7 +65,7 @@ const commonRules = {
       ],
     },
   ],
-}
+};
 
 // Mirrored rules that need some kind of handling, like using the rule from a
 // different scope, before being applied.
@@ -83,7 +83,7 @@ const mirroredRules = {
       varsIgnorePattern: '^_[\\w\\d_]*$',
     },
   ],
-}
+};
 
 const common = {
   env: { browser: true, es2021: true, node: true },
@@ -95,13 +95,13 @@ const common = {
   ],
   plugins: ['simple-import-sort'],
   rules: { ...commonRules, ...mirroredRules },
-}
+};
 
 const javascript = {
   files: ['**/*.{js,jsx,mjs}'],
   extends: ['standard', 'prettier'],
   rules: common.rules,
-}
+};
 
 const typescript = {
   files: ['**/*.{ts,tsx}'],
@@ -184,7 +184,7 @@ const typescript = {
       },
     ],
   },
-}
+};
 
 const test = {
   env: { ...common.env, jest: true },
@@ -209,9 +209,9 @@ const test = {
      */
     'jest/require-top-level-describe': 'error',
   },
-}
+};
 
 module.exports = {
   ...common,
   overrides: [javascript, typescript, test],
-}
+};
