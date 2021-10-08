@@ -72,7 +72,7 @@ const commonRules = {
 const mirroredRules = {
   /**
    * Disallow unused variables.
-   * https://eslint.org/docs/rules/no-empty-function
+   * https://eslint.org/docs/rules/no-unused-vars
    */
   'no-unused-vars': [
     'error',
