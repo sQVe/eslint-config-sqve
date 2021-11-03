@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['plugin:@next/next/recommended'],
+  extends: ['plugin:@next/next/core-web-vitals'],
   rules: {
     /**
      * Disable enforcing valid anchor.
@@ -7,4 +7,4 @@ module.exports = {
      */
     'jsx-a11y/anchor-is-valid': 'off',
   },
-}
+};
